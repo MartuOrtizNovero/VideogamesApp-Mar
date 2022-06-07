@@ -1,0 +1,59 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    font-family: consolas;
+    box-sizing: border-box;
+} */
+
+body {
+    background-image: url('./images/lara1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-wrap: wrap;
+    background-attachment: fixed;
+}
+
+.landing_title {
+    font-family: consolas;
+    color: #91fcf8;
+/*     -webkit-text-stroke:2px black; */
+    margin-top: 40px;
+    letter-spacing: 3px;
+    margin-right: 800px;
+    font-size: 45px;
+
+}
+
+
+.landing_btn {
+    font-family: consolas;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    padding: 15px 20px;
+    margin: 20px 0;
+    margin-right: 800px;
+    margin-top: 180px;
+    color: #91fcf8;
+    font-size: 24px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: 0.5s;
+    letter-spacing: 4px;
+    border-radius: 60px;
+    border-color: #91fcf8;
+    background-color: #0d2024be;
+    cursor: pointer;
+}
+
+
+.landing_btn:hover {
+    background: #91fcf87e;
+    color: #050801;
+    box-shadow: 0 0 5px #03e9f4,
+        0 0 25px #03e9f4,
+        0 0 50px #03e9f4,
+        0 0 200px #03e9f4,
+
+}

@@ -1,0 +1,49 @@
+.container_all {
+    background-color: #000000bb;
+    /*  color: #91fcf8; */
+}
+
+label {
+    color: #91fcf8;
+}
+
+h1 {
+    color: #91fcf8;
+}
+
+.btn_home {
+    margin-top: 25px;
+    font-family: consolas;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    color: #91fcf8;
+    font-size: 19px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: 0.5s;
+    letter-spacing: 0px;
+
+}
+
+.error {
+    color: red;
+}
+
+.btn_create {
+    margin-top: 40px;
+    font-family: consolas;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.5s;
+    border-radius: 60px;
+    background-color: #91fcf8;
+    padding: 4px;
+    cursor: pointer;
+}

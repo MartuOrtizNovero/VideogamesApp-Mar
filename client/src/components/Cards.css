@@ -1,0 +1,54 @@
+.containerr{
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+}
+
+.read{
+    font-family: consolas;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.5s;
+    padding: 4px;
+    border-radius: 60px;
+    color: black;
+    background-color: #91fcf8;
+    border-color:black;
+    cursor: pointer;
+}
+
+.cards2{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-left: 10%;
+    max-width: 1000px;
+    flex-wrap: wrap;
+    text-align: center;
+    padding-top: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 14px;
+    margin: 20px;
+    border-radius: 8px;
+    cursor: default;
+    background: #91fcf833;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    transition: all 400ms ease;
+}
+
+.cards2:hover {
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5%);
+    cursor: pointer;
+}
+
+.image{
+    border-radius:8px ;
+    justify-content: center
+}
+

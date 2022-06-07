@@ -1,0 +1,22 @@
+.paginado {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+
+}
+
+.li {
+    float: left;
+    margin: 0px 2px;
+}
+
+.boton {
+    color: #91fcf8;
+    background-color: black;
+    border-radius: 60px;
+    border-color: #91fcf8;
+    cursor: pointer;
+    margin-top: 12px;
+    margin-bottom: 15px;
+}

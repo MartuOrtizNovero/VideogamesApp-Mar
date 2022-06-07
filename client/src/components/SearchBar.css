@@ -1,0 +1,32 @@
+input {
+    padding: 6px;
+    border-radius: 15px;
+    border-color: black;
+    background: #91fcf8;
+    margin-right: 11px;
+    font-weight: bold;
+    font-family: consolas;
+}
+
+::placeholder {
+    font-weight: bold;
+}
+
+.botonSearch {
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 15px;
+    border-color: black;
+    background: #91fcf8;
+    margin-right: 11px;
+    font-weight: bold;
+    font-family: consolas;
+    transition: all 0.3s ease;
+
+}
+
+.botonSearch:hover {
+    background: black;
+    color: #91fcf8;
+
+}

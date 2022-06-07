@@ -1,0 +1,51 @@
+.loadingImg{
+    margin-top: 70px;
+}
+.containerDetail{
+    background-color: #000000bb;
+}
+
+.right{
+    color:  #91fcf8;
+}
+.boton_home{
+    font-family: consolas;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.5s;
+    border-radius: 60px;
+    background-color: #91fcf8;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.img2{
+    border-radius:8px ;
+    justify-content: center
+}
+
+.todoDetail{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-left: 166px;
+ /*    margin-left: 10%; */
+    max-width: 1000px;
+    flex-wrap: wrap;
+    text-align: center;
+    padding-top: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 14px;
+   /*  margin: 20px; */
+    border-radius: 8px;
+    cursor: default;
+    background: #91fcf833;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    transition: all 400ms ease;
+}
