@@ -7,12 +7,12 @@ const { API_KEY } = process.env;
 
 const apiGames = async () => {
 
-    let allGames = [];// voy metiendo lo que voy iterando en cada pagina
-    for (i = 1; i < 6; i++) {// aca itero paginas por  eso empiezo en 1
-        let currentUrl = axios.get(// pagina actual donde estoy parado y guardo TODO {}
+    let allGames = [];
+    for (i = 1; i < 6; i++) {
+        let currentUrl = axios.get(
             `https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`
         );
-        let apiInfo = currentUrl // Aca guardo la info mapeada 
+        let apiInfo = currentUrl
             .then((res) =>
                 res.data.results.map((e) => {
                     return {
@@ -27,24 +27,18 @@ const apiGames = async () => {
                     };
                 })
             )
-            .catch((error) => { console.log(error) }) // informacion mas detallada del error
+            .catch((error) => { console.log(error) })
 
-        allGames = allGames.concat(apiInfo);//[[]]
-        /* [...allGames, apiInfo]; */
+        allGames = allGames.concat(apiInfo);
+
     }
 
-    return Promise.all(allGames).then((r) => r.flat()); // [[{},{},{}]]
+    return Promise.all(allGames).then((r) => r.flat());
 }
 
 const dbGames = async () => {
     const infoDB = await Videogame.findAll({
-        include: {
-            model: Genre,
-            attributes: ['name'],
-            through: {
-                attributes: [],
-            },
-        },
+        include: [Genre]
     });
     return infoDB;
 }
@@ -60,8 +54,6 @@ const allVg = async () => {
         } else {
             return gamesApi;
         }
-
-        /*   return Promise.all([dbGames(), apiGames()]).then((r) => r.flat()); */
     } catch (err) {
         console.log(err);
     }
@@ -83,18 +75,22 @@ const apiPlatforms = async () => {
                 })
             )
             .catch((error) => { console.log(error) });
-        allPlat = allPlat.concat(apiPlat);  //[[{ platforms: ["p","p","p"]}]]
+        allPlat = allPlat.concat(apiPlat);
     }
     return Promise.all(allPlat)
-        .then((r) => r.flat())// [{ platforms: ["a","p","p"]}]
-        .then((p) => p.map(c => c.platforms.filter(pl => pl))) // toma de cada elemento del array y devuelve un nuevo array con cada elemento [["a","p","p"]]
-        .then((l) => l.flat().filter((el, i, array) => {// estamos sacando los repetidos
-            return i === array.indexOf(el)// devuelve no repetidos
-            //   [1,2,3,1]   estoy comparando el indice del array con el indice del valor del numero  ej: incide 0 y valor 1 , indice 3 valor 1, aca
-        }));// i  0 1 2 3    los valores son repetidos por eso no devuelve los repetidos 
+        .then((r) => r.flat())
+        .then((p) => p.map(c => c.platforms.filter(pl => pl)))
+        .then((l) => l.flat().filter((el, i, array) => {
+            return i === array.indexOf(el)
+
+        }));
 
 }
+/* [ 'hola' , 'chau' , 'bye', 'hola']
+     I
+       J
 
+en la segunda vuelta realiza la misma comparacion tomando de referencia el indice del elemento, y no hay coincidencia  */
 module.exports = {
     allVg,
     apiGames,

@@ -57,7 +57,7 @@ export default function reducer(state = initialState, { type, payload }) {
                 : filterByGenres.filter(
                     (videogame) =>
                         videogame.genres &&
-                        videogame.genres.map((genres) => genres.name ? genres.name : genres).includes(payload)//???
+                        videogame.genres.map((genres) => genres.name ? genres.name : genres).includes(payload)
                 );
             return {
                 ...state,
@@ -89,7 +89,7 @@ export default function reducer(state = initialState, { type, payload }) {
                 videogames: sortedArray
             };
 
-        case "SORT_BY_RATING"://???????????????????????
+        case "SORT_BY_RATING":
             let sortByRating =
                 payload === "higher-rating"
                     ? state.videogames.sort((a, b) => {
@@ -97,6 +97,7 @@ export default function reducer(state = initialState, { type, payload }) {
                     })
                     : state.videogames.sort((a, b) => {
                         return a.rating - b.rating;
+
                     });
             return {
                 ...state,
@@ -113,6 +114,13 @@ export default function reducer(state = initialState, { type, payload }) {
             return {
                 ...state
             }
+       /*  case 'FILTER_BY_AGE':
+            const filterByAge = state.details;
+            const age = payload === "dieciocho"
+            ?
+            filterByAge.age.filter(i => i ) */
+            
+        
 
 
         default: return state

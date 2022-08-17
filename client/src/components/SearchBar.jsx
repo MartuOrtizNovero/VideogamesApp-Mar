@@ -22,12 +22,11 @@ export default function SearchBar() {
         if (name.length > 0) {
             dispatch(getVideogameByName(name));
             setName('');
-            e.target.reset()//????????????????
+            e.target.reset()
         } else {
             alert('type the name of any game!')
         }
     }
-// porque pasa el submit en el form????
 
     return (
         <div>

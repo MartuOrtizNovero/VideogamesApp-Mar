@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState, useEffect/* , Fragment */ } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGames, getGenres/* , resetDetails */, filterBySource, sortByName, sortByRating, filterByGenres } from '../redux/action/index';
+import { getGames, getGenres, filterBySource, sortByName, sortByRating, filterByGenres} from '../redux/action/index';
 import Pagination from "./Pagination";
 import Cards from "./Cards";
 import SearchBar from "./SearchBar";
@@ -12,9 +12,9 @@ import loading from './images/cargador.png.gif'
 
 export default function Home() {
     const dispatch = useDispatch();
-    const allVideoGames = useSelector((state) => state.videogames);// nos lo traemos del REDUCER
+    const allVideoGames = useSelector((state) => state.videogames);
     const genres = useSelector((state) => state.genres);
-    const [, setOrder] = useState('');   // declaramos un estado local 
+    const [, setOrder] = useState('');
 
     //---------------------------------------PAGINADO--------------------------------------------------------------------
 
@@ -42,6 +42,7 @@ export default function Home() {
     }
 
     function handleFilterBySource(e) {
+        e.preventDefault();
         dispatch(filterBySource(e.target.value))
     }
 
@@ -50,13 +51,18 @@ export default function Home() {
         dispatch(filterByGenres(e.target.value));
     }
 
+    /* function handleFilterByAge(e) {
+        e.preventDefault();
+        dispatch(filterByAge(e.target.value))
+
+    } */
+
     function handleSortByName(e) {
         e.preventDefault();
         dispatch(sortByName(e.target.value));
         setCurrentPage(1);
         setOrder(`${e.target.value}`)
     }
-
 
     function handleSortByRating(e) {
         e.preventDefault();
@@ -85,6 +91,18 @@ export default function Home() {
                     <option value="Created">Created</option>
                 </select>
 
+                {/* <select onChange={(e) => handleFilterByAge(e)} defaultValue='Filter By Age'>
+                    <option disabled>Filter By Age</option>
+                    <option value="dieciocho">18 a 28</option>
+                    <option value="veintiocho">28 a 38</option>
+                    <option value="treintiocho">38 a 48</option>
+                    <option value="cuarentiocho">48 a 58</option>
+                    <option value="cincuentiocho">58 a 68</option>
+                    <option value="sesentiocho">68 a 78</option>
+                    <option value="setentiocho">78 a 88</option>
+                    <option value="ochentiocho">88 a 98</option>
+                </select>
+ */}
                 <select onChange={(e) => handleFilterByGenres(e)} defaultValue='Filter By Genre'>
                     <option disabled>Filter By Genre</option>
                     <option value="All">All Genres</option>
@@ -125,6 +143,7 @@ export default function Home() {
                             img={g.img ? g.img : g.img}
                             genres={g.genres}
                             platforms={g.platforms}
+                            rating={g.rating}
                         />
                     );
                 }) : <div className="loading_container">

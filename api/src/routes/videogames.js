@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
       createdInDb
     })
 
-    let genresDb = await Genre.findAll({// en este caso no creo generos, solo los encuentro
+    let genresDb = await Genre.findAll({
       where: { name: genres }
     })
     newGame.addGenre(genresDb)
@@ -51,7 +51,7 @@ router.post('/', async (req, res) => {
   }
 })
 
-router.get('/:id', async (req, res) => {// en la url params todo lo que viene despues de : 
+router.get('/:id', async (req, res) => {
   const { id } = req.params;
   try {
     if (id.includes('-')) {
@@ -60,8 +60,7 @@ router.get('/:id', async (req, res) => {// en la url params todo lo que viene de
       })
       if (gamesId) return res.status(200).send(gamesId);
     } else {
-      const game = await axios.get(`https://api.rawg.io/api/games/${id}?key=${ API_KEY}`);
-      //console.log(game)
+      const game = await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`);
       const info = {
         id: game.data.id,
         name: game.data.name,
@@ -71,55 +70,13 @@ router.get('/:id', async (req, res) => {// en la url params todo lo que viene de
         description: game.data.description_raw,
         rating: game.data.rating,
         releaseDate: game.data.released,
+        playtime: game.data.playtime
       }
       return res.status(200).send(info);
-        }
-      }catch (error) {
-        console.log(error);}});
-
-/* router.get('/:id', async (req, res) => {// en la url params todo lo que viene despues de : 
-  const { id } = req.params;
-
-  if (id.includes('-')) {
-    let gamesId = await Videogame.findByPk(id, {
-      include: Genre,
-    })
-    if (gamesId) return res.status(200).send(gamesId);
-  } else {
-    await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
-      .then((...resp) => {//???????????????????????????????????????????????????????????????????????????
-        let gameApiId = resp.map(game => {
-          return {
-            id: game.data.id,
-            name: game.data.name,
-            description: game.data.description,
-            genres: game.data.genres.map((e) => e.name),
-            releaseDate: game.data.released,
-            img: game.data.background_image,
-            rating: game.data.rating,
-            platforms: game.data.platforms.map((e) => e.platform.name)
-          }
-        })
-        gameApiId.length > 0 ?
-          res.send(gameApiId[0]) :
-          res.status(404).send({ msg: 'game not found' })
-      })
-      .catch((error) => { console.log(error) })
+    }
+  } catch (error) {
+    console.log(error);
   }
-}); */
-
-// eliminar y practicar
-/* router.put("/:id", (req, res) => {
-  const { id } = req.params;
-  const { name: name } = req.body;//??
-
-  try {
-    Videogame.findByPk(id)
-      .then((r) => r.update({ name: name }));
-    res.send(200, "Videogame modified!");
-  } catch (err) {
-    console.log(err);
-  }
-}); */
+});
 
 module.exports = router;

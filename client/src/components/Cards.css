@@ -21,6 +21,12 @@
     cursor: pointer;
 }
 
+.read:hover{
+    color: #91fcf8;
+    background-color: black;
+    border-color:black;
+}
+
 .cards2{
     width: 100%;
     display: flex;

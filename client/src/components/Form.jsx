@@ -16,7 +16,7 @@ const validDate = (num) => {
 const validRating = (num) => {
     if (num.match(
         /^[+]?(\d*\.[0-9]+|[0-5])$/
-        // /^?(\d[0-5]{1}*[.])?[0-9]{2}+/
+
     ) && num !== '') {
         return true;
     } else {
@@ -26,7 +26,7 @@ const validRating = (num) => {
 
 export default function Form() {
     const dispatch = useDispatch();
-    const genres = useSelector((state) => state.genres);
+    const genres = useSelector((state) => state.genres);// userProfile.interests
     const existingGames = useSelector(state => state.videogames);
     const platforms = useSelector((state) => state.platforms)
     const navigate = useNavigate();
@@ -131,6 +131,9 @@ export default function Form() {
         else if (input.rating.length > 4) {
             return alert("*Rating only admit 2 decimals")
         }
+        else if (input.rating > 5) {
+            return alert("*Rating only admit less than 5")
+        }
         else if (!validRating(input.rating)) {
             return alert("Rating must be a float number between 0 and 5")
         }
@@ -140,6 +143,7 @@ export default function Form() {
         else if (!input.platforms[0]) {
             return alert("At least one Platform is required");
         }
+        
 
         dispatch(postGame(input))
         alert('¡Videogame posted!')
@@ -197,6 +201,9 @@ export default function Form() {
         }
         else if (input.rating.length > 4) {
             errors.rating = "*Rating only admit 2 decimals"
+        }
+        else if (input.rating > 5) {
+            errors.rating = "*Rating only admit less than 5"
         }
         else if (!validRating(input.rating)) {
             errors.rating = "Rating must be a float number between 0 and 5"

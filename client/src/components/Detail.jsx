@@ -23,18 +23,23 @@ export default function Detail() {
         dispatch(resetDetails())
         navigate('/home')
     }
-    function cleanText(text) { //?????????????????????
+    function cleanText(text) {
         let cleanString = /[<^/>]p*/g;
         return text.replace(cleanString, '')
     }
 
     return (
         <div className="containerDetail">
+
+
             <br />
             {
                 Object.keys(vgDetails).length ?
                     <div className='todoDetail'>
                         <div className="left">
+                            <Link to='/home'>
+                                <button onClick={(e) => cleanSubmit(e)} className='boton_home'>Return to Home</button>
+                            </Link>
                             <h1 className="name1">NAME <br /> {vgDetails.name.toUpperCase()}</h1>
                             <img className="img2" src={vgDetails.img} alt="videogame" height={190} weight={180} />
                         </div>
@@ -54,9 +59,6 @@ export default function Detail() {
                         <div >
                             <br />
 
-                            <Link to='/home'>
-                                <button onClick={(e) => cleanSubmit(e)} className='boton_home'>Return to Home</button>
-                            </Link>
                             <br />
                             <br />
                             <br />
@@ -65,7 +67,7 @@ export default function Detail() {
                             <br />
                             <br />
                         </div>
-                        
+
                     </div>
                     :
                     <div>
@@ -79,20 +81,6 @@ export default function Detail() {
 
                     </div>
             }
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
 
         </div>
     )

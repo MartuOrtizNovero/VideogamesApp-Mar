@@ -3,7 +3,7 @@ const { DataTypes, UUIDV4 } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('videogame', {
+  sequelize.define('videogame', {   
     id: {
       type: DataTypes.UUID,
       defaultValue: UUIDV4,
@@ -26,7 +26,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING
     },
     rating: {
-      type: DataTypes.FLOAT,// permite poner numeros con coma, o decimales 5,5
+      type: DataTypes.FLOAT,
     },
     img: {
       type: DataTypes.TEXT,

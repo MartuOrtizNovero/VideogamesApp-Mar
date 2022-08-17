@@ -20,3 +20,8 @@
     margin-top: 12px;
     margin-bottom: 15px;
 }
+
+.boton:focus{
+    background-color:  #91fcf8;
+    color:black;
+}
